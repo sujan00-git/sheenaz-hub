@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sheet 6 — Compare Fractions (2)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-sheet="6">
+  <div class="topbar">
+    <a class="btn ghost small" href="../../index.html">🏠 Home</a>
+    <a class="btn ghost small" href="index.html">📒 All Sheets</a>
+    <h1>Sheet 6 of 9 — Compare Fractions (2)</h1>
+    <span class="spacer"></span>
+    <button class="btn secondary small" id="saveBtn">💾 Save</button>
+    <button class="btn ghost small" id="clearBtn">🧽 Clear</button>
+    <button class="btn ghost small" id="printBtn">🖨 Print</button>
+    <span class="status" id="status"></span>
+  </div>
+
+  <section class="reference">
+    <details open>
+      <summary>Show the original worksheet picture (look at the shaded circles)</summary>
+      <img src="sheet-6.jpeg" alt="Original worksheet 6">
+    </details>
+  </section>
+
+  <section class="sheet">
+    <h2 class="sheet-title">COMPARE THE FRACTIONS</h2>
+
+    <div class="grid">
+      <div class="box">
+        <p class="prompt">Compare the fractions with &gt;, &lt;, or =.</p>
+        <p class="sub">(Top-left pair of circles)</p>
+        <div class="row center"><span>Left</span><input class="ans small" name="q1" placeholder="?"><span>Right</span></div>
+      </div>
+      <div class="box">
+        <p class="prompt">Compare the fractions with &gt;, &lt;, or =.</p>
+        <p class="sub">(Top-right pair of circles)</p>
+        <div class="row center"><span>Left</span><input class="ans small" name="q2" placeholder="?"><span>Right</span></div>
+      </div>
+      <div class="box">
+        <p class="prompt">Compare the fractions with &gt;, &lt;, or =.</p>
+        <p class="sub">(Middle-left pair of circles)</p>
+        <div class="row center"><span>Left</span><input class="ans small" name="q3" placeholder="?"><span>Right</span></div>
+      </div>
+      <div class="box">
+        <p class="prompt">Compare the fractions with &gt;, &lt;, or =.</p>
+        <p class="sub">(Middle-right pair of circles)</p>
+        <div class="row center"><span>Left</span><input class="ans small" name="q4" placeholder="?"><span>Right</span></div>
+      </div>
+
+      <div class="box">
+        <p class="prompt">Which fractions below are <u>less than ½</u>? *Select two.</p>
+        <div class="choices">
+          <label class="choice"><input type="checkbox" name="q5" value="5/6"><span><span class="frac"><span class="n">5</span><span class="d">6</span></span></span></label>
+          <label class="choice"><input type="checkbox" name="q5" value="3/7"><span><span class="frac"><span class="n">3</span><span class="d">7</span></span></span></label>
+          <label class="choice"><input type="checkbox" name="q5" value="3/5"><span><span class="frac"><span class="n">3</span><span class="d">5</span></span></span></label>
+          <label class="choice"><input type="checkbox" name="q5" value="9/3"><span><span class="frac"><span class="n">9</span><span class="d">3</span></span></span></label>
+          <label class="choice"><input type="checkbox" name="q5" value="2/8"><span><span class="frac"><span class="n">2</span><span class="d">8</span></span></span></label>
+        </div>
+      </div>
+
+      <div class="box">
+        <p class="prompt">Which fractions below are <u>greater than ½</u>? *Select two.</p>
+        <div class="choices">
+          <label class="choice"><input type="checkbox" name="q6" value="1/4"><span><span class="frac"><span class="n">1</span><span class="d">4</span></span></span></label>
+          <label class="choice"><input type="checkbox" name="q6" value="6/7"><span><span class="frac"><span class="n">6</span><span class="d">7</span></span></span></label>
+          <label class="choice"><input type="checkbox" name="q6" value="6/12"><span><span class="frac"><span class="n">6</span><span class="d">12</span></span></span></label>
+          <label class="choice"><input type="checkbox" name="q6" value="4/9"><span><span class="frac"><span class="n">4</span><span class="d">9</span></span></span></label>
+          <label class="choice"><input type="checkbox" name="q6" value="4/3"><span><span class="frac"><span class="n">4</span><span class="d">3</span></span></span></label>
+        </div>
+      </div>
+
+      <div class="box">
+        <p class="prompt">Circle the best words to compare the fractions.</p>
+        <p class="sub"><span class="frac big"><span class="n">6</span><span class="d">4</span></span> &nbsp; ___ &nbsp; <span class="frac big"><span class="n">5</span><span class="d">6</span></span></p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="q7" value="greater"><span>is greater than</span></label>
+          <label class="choice"><input type="radio" name="q7" value="less"><span>is less than</span></label>
+          <label class="choice"><input type="radio" name="q7" value="equal"><span>is equal to</span></label>
+        </div>
+      </div>
+      <div class="box">
+        <p class="prompt">Circle the best words to compare the fractions.</p>
+        <p class="sub"><span class="frac big"><span class="n">3</span><span class="d">7</span></span> &nbsp; ___ &nbsp; <span class="frac big"><span class="n">5</span><span class="d">8</span></span></p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="q8" value="greater"><span>is greater than</span></label>
+          <label class="choice"><input type="radio" name="q8" value="less"><span>is less than</span></label>
+          <label class="choice"><input type="radio" name="q8" value="equal"><span>is equal to</span></label>
+        </div>
+      </div>
+
+      <div class="box">
+        <p class="prompt">The table shows the distance four horses ran in a race.</p>
+        <table class="wtable">
+          <tr><td>Honey</td><td>3 <span class="frac"><span class="n">3</span><span class="d">4</span></span> km</td></tr>
+          <tr><td>Blaze</td><td>3 <span class="frac"><span class="n">3</span><span class="d">6</span></span> km</td></tr>
+          <tr><td>Lucky</td><td>3 <span class="frac"><span class="n">1</span><span class="d">3</span></span> km</td></tr>
+          <tr><td>Star</td><td>2 <span class="frac"><span class="n">7</span><span class="d">8</span></span> km</td></tr>
+        </table>
+        <div class="col">
+          <label>The horse that ran the farthest was <input class="ans wide" name="q9_far"></label>
+          <label>The horse that ran the least was <input class="ans wide" name="q9_least"></label>
+        </div>
+      </div>
+
+      <div class="box">
+        <p class="prompt">The table shows the lengths of four bugs that Harold measured.</p>
+        <table class="wtable">
+          <tr><td>Stink</td><td>1 <span class="frac"><span class="n">2</span><span class="d">3</span></span> cm</td></tr>
+          <tr><td>Lady</td><td>1 <span class="frac"><span class="n">1</span><span class="d">10</span></span> cm</td></tr>
+          <tr><td>Beetle</td><td>1 <span class="frac"><span class="n">1</span><span class="d">2</span></span> cm</td></tr>
+          <tr><td>Fly</td><td>1 <span class="frac"><span class="n">2</span><span class="d">5</span></span> cm</td></tr>
+        </table>
+        <div class="col">
+          <label>The longest bug is <input class="ans wide" name="q10_long"></label>
+          <label>The shortest bug is <input class="ans wide" name="q10_short"></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-actions">
+      <a class="btn ghost" href="../../index.html">🏠 Back to Home</a>
+      <a class="btn ghost" href="sheet-5.html">← Previous</a>
+      <a class="btn secondary" href="sheet-7.html">Next sheet →</a>
+    </div>
+  </section>
+
+<script src="common.js"></script>
+</body>
+</html>

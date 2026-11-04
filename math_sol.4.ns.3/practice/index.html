@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sheenaz — 4.NS.3 Practice Sheets</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .tiles {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px; margin-top: 16px;
+  }
+  .tile {
+    display: block; text-decoration: none; color: inherit;
+    background: #fff; border-radius: 16px; padding: 16px;
+    box-shadow: 0 6px 18px rgba(43,45,66,0.08);
+    border-top: 6px solid var(--accent);
+    transition: transform .15s;
+  }
+  .tile:hover { transform: translateY(-3px); }
+  .tile .num {
+    display: inline-block; width: 36px; height: 36px; line-height: 36px;
+    text-align: center; background: var(--accent); color: #fff;
+    border-radius: 999px; font-weight: bold; margin-bottom: 8px;
+  }
+  .tile h3 { margin: 4px 0 4px; font-size: 1.1rem; }
+  .tile p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+  .tile.c2 { border-top-color: var(--accent-2); }
+  .tile.c2 .num { background: var(--accent-2); }
+  .tile.c3 { border-top-color: var(--accent-3); }
+  .tile.c3 .num { background: var(--accent-3); }
+  .tile.c4 { border-top-color: var(--accent-4); }
+  .tile.c4 .num { background: var(--accent-4); }
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <a class="btn ghost small" href="../../index.html">🏠 Home</a>
+    <h1>Math SOL 4.NS.3 — Practice Sheets</h1>
+    <span class="spacer"></span>
+  </div>
+
+  <section class="sheet">
+    <p style="text-align:center;margin:0 0 6px;color:var(--muted)">
+      Pick a sheet to practice. Your answers save automatically in this browser.
+    </p>
+    <div class="tiles">
+      <a class="tile" href="sheet-1.html"><span class="num">1</span><h3>Review</h3><p>Order fractions &amp; benchmarks &amp; number line.</p></a>
+      <a class="tile c2" href="sheet-2.html"><span class="num">2</span><h3>Compare</h3><p>&gt;, &lt;, =, less/greater than ½, tables.</p></a>
+      <a class="tile c3" href="sheet-3.html"><span class="num">3</span><h3>Equivalent</h3><p>Equivalent fractions &amp; number lines.</p></a>
+      <a class="tile c4" href="sheet-4.html"><span class="num">4</span><h3>Division &amp; Decompose</h3><p>Cookies, sandwiches, mixed numbers.</p></a>
+      <a class="tile" href="sheet-5.html"><span class="num">5</span><h3>Review (2)</h3><p>Another ordering/benchmark review page.</p></a>
+      <a class="tile c2" href="sheet-6.html"><span class="num">6</span><h3>Compare (2)</h3><p>More &gt;/&lt;/=, horses, bugs.</p></a>
+      <a class="tile c4" href="sheet-7.html"><span class="num">7</span><h3>Division &amp; Decompose (2)</h3><p>Tokens, pizzas, mixed numbers.</p></a>
+      <a class="tile c3" href="sheet-8.html"><span class="num">8</span><h3>Multiple Choice (1)</h3><p>Ordering, number line, PE class jumps.</p></a>
+      <a class="tile c3" href="sheet-9.html"><span class="num">9</span><h3>Multiple Choice (2)</h3><p>Equivalent, division, decomposing.</p></a>
+    </div>
+
+    <div class="footer-actions">
+      <a class="btn ghost" href="../../index.html">🏠 Back to Home</a>
+    </div>
+  </section>
+</body>
+</html>

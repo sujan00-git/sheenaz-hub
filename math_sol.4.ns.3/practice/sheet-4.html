@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sheet 4 — Dividing & Decomposing</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-sheet="4">
+  <div class="topbar">
+    <a class="btn ghost small" href="../../index.html">🏠 Home</a>
+    <a class="btn ghost small" href="index.html">📒 All Sheets</a>
+    <h1>Sheet 4 of 9 — Division & Decomposing</h1>
+    <span class="spacer"></span>
+    <button class="btn secondary small" id="saveBtn">💾 Save</button>
+    <button class="btn ghost small" id="clearBtn">🧽 Clear</button>
+    <button class="btn ghost small" id="printBtn">🖨 Print</button>
+    <span class="status" id="status"></span>
+  </div>
+
+  <section class="reference">
+    <details open>
+      <summary>Show the original worksheet picture</summary>
+      <img src="sheet-4.jpeg" alt="Original worksheet 4">
+    </details>
+  </section>
+
+  <section class="sheet">
+    <h2 class="sheet-title">DIVISION & DECOMPOSING</h2>
+
+    <div class="grid">
+      <!-- Q1 -->
+      <div class="box">
+        <p class="prompt">Sarah's grandmother split 6 cookies equally between her three grandchildren. Write a division statement.</p>
+        <textarea class="ans long" name="q1" rows="2" placeholder="Example: 6 ÷ 3 = ___"></textarea>
+      </div>
+      <!-- Q2 -->
+      <div class="box">
+        <p class="prompt">What fraction is composed below? (Three circles, each with one of 8 parts shaded, added together.)</p>
+        <input class="ans wide" name="q2" placeholder="?/?">
+      </div>
+
+      <!-- Q3 -->
+      <div class="box">
+        <p class="prompt">Draw a picture to show 8 people splitting four sandwiches. Write what fraction each person gets.</p>
+        <textarea class="ans long" name="q3" rows="3" placeholder="Each person gets ___ of a sandwich."></textarea>
+      </div>
+      <!-- Q4 -->
+      <div class="box">
+        <p class="prompt">Show TWO ways to decompose the fraction <span class="frac"><span class="n">8</span><span class="d">12</span></span>.</p>
+        <div class="col">
+          <label>Way 1: <input class="ans long" name="q4_a" placeholder="?/12 + ?/12 = 8/12"></label>
+          <label>Way 2: <input class="ans long" name="q4_b" placeholder="?/12 + ?/12 = 8/12"></label>
+        </div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="box">
+        <p class="prompt">Write three ways to show "seven divided by 3".</p>
+        <div class="col">
+          <label>1) <input class="ans long" name="q5_a" placeholder="Example: 7 ÷ 3"></label>
+          <label>2) <input class="ans long" name="q5_b"></label>
+          <label>3) <input class="ans long" name="q5_c"></label>
+        </div>
+      </div>
+      <!-- Q6 -->
+      <div class="box">
+        <p class="prompt">What fraction is modeled below?</p>
+        <p class="sub" style="text-align:center">
+          <span class="frac big"><span class="n">3</span><span class="d">10</span></span> +
+          <span class="frac big"><span class="n">4</span><span class="d">10</span></span> +
+          <span class="frac big"><span class="n">4</span><span class="d">10</span></span> +
+          <span class="frac big"><span class="n">2</span><span class="d">10</span></span>
+        </p>
+        <label>Sum: <input class="ans wide" name="q6_sum" placeholder="?/10"></label>
+        <p class="sub">Write the answer as a mixed number.</p>
+        <input class="ans wide" name="q6_mixed" placeholder="1 ?/10">
+      </div>
+
+      <!-- Q7 -->
+      <div class="box">
+        <p class="prompt">Which division statement shows 9 children splitting two pizzas?</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="q7" value="9/2"><span><span class="frac"><span class="n">9</span><span class="d">2</span></span></span></label>
+          <label class="choice"><input type="radio" name="q7" value="2/9"><span><span class="frac"><span class="n">2</span><span class="d">9</span></span></span></label>
+        </div>
+      </div>
+      <!-- Q8 -->
+      <div class="box">
+        <p class="prompt">Fill in the empty boxes to make each equation true.</p>
+        <p class="sub" style="text-align:center">
+          <span class="frac big"><span class="n">?</span><span class="d">8</span></span> +
+          <span class="frac big"><span class="n">?</span><span class="d">8</span></span> +
+          <span class="frac big"><span class="n">?</span><span class="d">8</span></span> = 1<span class="frac"><span class="n">3</span><span class="d">8</span></span>
+        </p>
+        <div class="row center">
+          <input class="ans small" name="q8a_1">+<input class="ans small" name="q8a_2">+<input class="ans small" name="q8a_3">
+        </div>
+        <p class="sub" style="text-align:center">
+          <span class="frac big"><span class="n">?</span><span class="d">4</span></span> +
+          <span class="frac big"><span class="n">?</span><span class="d">4</span></span> +
+          <span class="frac big"><span class="n">?</span><span class="d">4</span></span> = 3<span class="frac"><span class="n">1</span><span class="d">4</span></span>
+        </p>
+        <div class="row center">
+          <input class="ans small" name="q8b_1">+<input class="ans small" name="q8b_2">+<input class="ans small" name="q8b_3">
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-actions">
+      <a class="btn ghost" href="../../index.html">🏠 Back to Home</a>
+      <a class="btn ghost" href="sheet-3.html">← Previous</a>
+      <a class="btn secondary" href="sheet-5.html">Next sheet →</a>
+    </div>
+  </section>
+
+<script src="common.js"></script>
+</body>
+</html>

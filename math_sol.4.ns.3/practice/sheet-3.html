@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sheet 3 — Equivalent Fractions</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-sheet="3">
+  <div class="topbar">
+    <a class="btn ghost small" href="../../index.html">🏠 Home</a>
+    <a class="btn ghost small" href="index.html">📒 All Sheets</a>
+    <h1>Sheet 3 of 9 — Equivalent Fractions</h1>
+    <span class="spacer"></span>
+    <button class="btn secondary small" id="saveBtn">💾 Save</button>
+    <button class="btn ghost small" id="clearBtn">🧽 Clear</button>
+    <button class="btn ghost small" id="printBtn">🖨 Print</button>
+    <span class="status" id="status"></span>
+  </div>
+
+  <section class="reference">
+    <details open>
+      <summary>Show the original worksheet picture (look at the models)</summary>
+      <img src="sheet-3.jpeg" alt="Original worksheet 3">
+    </details>
+  </section>
+
+  <section class="sheet">
+    <h2 class="sheet-title">EQUIVALENT FRACTIONS</h2>
+
+    <div class="grid">
+      <!-- Q1 -->
+      <div class="box">
+        <p class="prompt">Are these fractions equivalent? (two circle models)</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="q1" value="yes"><span>yes</span></label>
+          <label class="choice"><input type="radio" name="q1" value="no"><span>no</span></label>
+        </div>
+      </div>
+      <!-- Q2 -->
+      <div class="box">
+        <p class="prompt">Are these fractions equivalent? (two rectangle models)</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="q2" value="yes"><span>yes</span></label>
+          <label class="choice"><input type="radio" name="q2" value="no"><span>no</span></label>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="box">
+        <p class="prompt">Shade the second model to show an equivalent fraction to the first model. (squares)</p>
+        <p class="sub">Model 1 shows <input class="ans small" name="q3_f1" placeholder="?/?">. Write how many of the 10 small squares you shaded:</p>
+        <input class="ans small" name="q3_count" placeholder="# shaded">
+        <p class="sub">Equivalent fraction you made:</p>
+        <input class="ans wide" name="q3_eq" placeholder="?/10">
+      </div>
+      <!-- Q4 -->
+      <div class="box">
+        <p class="prompt">Shade the second model to show an equivalent fraction. (circles → hearts)</p>
+        <p class="sub">Model 1 fraction: <input class="ans small" name="q4_f1" placeholder="?/?"></p>
+        <p class="sub">How many hearts you shaded (out of 3):</p>
+        <input class="ans small" name="q4_count" placeholder="# shaded">
+        <p class="sub">Equivalent fraction:</p>
+        <input class="ans wide" name="q4_eq" placeholder="?/3">
+      </div>
+
+      <!-- Q5 -->
+      <div class="box">
+        <p class="prompt">Fill in the missing number to make the fractions equivalent. Then shade the model.</p>
+        <p class="sub" style="font-size:1.3rem;text-align:center">
+          <span class="frac big"><span class="n">4</span><span class="d">5</span></span>
+          &nbsp; = &nbsp;
+          <span class="frac big"><span class="n">?</span><span class="d">10</span></span>
+        </p>
+        <div class="row center">
+          Missing number: <input class="ans small" name="q5">
+        </div>
+      </div>
+      <!-- Q6 -->
+      <div class="box">
+        <p class="prompt">Fill in the missing number to make the fractions equivalent. Then shade the model.</p>
+        <p class="sub" style="font-size:1.3rem;text-align:center">
+          <span class="frac big"><span class="n">3</span><span class="d">9</span></span>
+          &nbsp; = &nbsp;
+          <span class="frac big"><span class="n">?</span><span class="d">3</span></span>
+        </p>
+        <div class="row center">
+          Missing number: <input class="ans small" name="q6">
+        </div>
+      </div>
+
+      <!-- Q7 -->
+      <div class="box">
+        <p class="prompt">Which fraction is equivalent to the point on the number line? (first number line — dot a little past the middle between 0 and 1)</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="q7" value="3/9"><span><span class="frac"><span class="n">3</span><span class="d">9</span></span></span></label>
+          <label class="choice"><input type="radio" name="q7" value="4/8"><span><span class="frac"><span class="n">4</span><span class="d">8</span></span></span></label>
+          <label class="choice"><input type="radio" name="q7" value="2/6"><span><span class="frac"><span class="n">2</span><span class="d">6</span></span></span></label>
+          <label class="choice"><input type="radio" name="q7" value="2/3"><span><span class="frac"><span class="n">2</span><span class="d">3</span></span></span></label>
+        </div>
+      </div>
+      <!-- Q8 -->
+      <div class="box">
+        <p class="prompt">Which fraction is equivalent to the point on the number line? (second number line — dot near the right end)</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="q8" value="2/3"><span><span class="frac"><span class="n">2</span><span class="d">3</span></span></span></label>
+          <label class="choice"><input type="radio" name="q8" value="8/9"><span><span class="frac"><span class="n">8</span><span class="d">9</span></span></span></label>
+          <label class="choice"><input type="radio" name="q8" value="10/12"><span><span class="frac"><span class="n">10</span><span class="d">12</span></span></span></label>
+          <label class="choice"><input type="radio" name="q8" value="3/4"><span><span class="frac"><span class="n">3</span><span class="d">4</span></span></span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-actions">
+      <a class="btn ghost" href="../../index.html">🏠 Back to Home</a>
+      <a class="btn ghost" href="sheet-2.html">← Previous</a>
+      <a class="btn secondary" href="sheet-4.html">Next sheet →</a>
+    </div>
+  </section>
+
+<script src="common.js"></script>
+</body>
+</html>

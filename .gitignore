@@ -1,0 +1,10 @@
+# Windows/WSL alternate data streams from WhatsApp downloads
+*:Zone.Identifier
+*:sec.endpointdlp
+
+# The 4th grade math book has its own repo
+mathbook-4thgrade/
+
+# OS cruft
+.DS_Store
+Thumbs.db
