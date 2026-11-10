@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grade 4 — Unit 2 Assessment: The Cracked Jug</title>
+<style>
+  :root {
+    --bg: #fdfcf7;
+    --ink: #2b2d42;
+    --muted: #6c7281;
+    --accent: #ff4d94;
+    --accent-2: #4dc3ff;
+    --accent-3: #ffb347;
+    --accent-4: #7ad67a;
+    --card: #ffffff;
+    --border: #e3e1d7;
+    --cell: #fffdf3;
+    --cell-border: #333;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Comic Sans MS', 'Trebuchet MS', system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    padding: 12px 16px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .topbar {
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    padding: 10px 14px; margin-bottom: 10px;
+    background: var(--card); border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(43,45,66,0.08);
+    position: sticky; top: 8px; z-index: 20;
+  }
+  .topbar h1 {
+    margin: 0; font-size: 1.1rem;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .topbar .spacer { flex: 1; }
+  .btn {
+    display: inline-block; padding: 8px 14px; border-radius: 999px;
+    background: var(--accent); color: #fff; text-decoration: none; border: none;
+    font: inherit; font-weight: bold; cursor: pointer;
+    box-shadow: 0 2px 6px rgba(255,77,148,0.35);
+  }
+  .btn.secondary { background: var(--accent-2); box-shadow: 0 2px 6px rgba(77,195,255,0.35); }
+  .btn.ghost { background: transparent; color: var(--ink); border: 2px solid var(--border); box-shadow: none; }
+  .btn.small { padding: 5px 10px; font-size: 0.85rem; }
+  .btn + .btn { margin-left: 4px; }
+  .btn:hover { filter: brightness(1.06); }
+
+  .reference {
+    background: var(--card); border-radius: 14px; padding: 10px;
+    box-shadow: 0 6px 18px rgba(43,45,66,0.08); margin-bottom: 14px;
+  }
+  .reference details { text-align: left; }
+  .reference summary {
+    cursor: pointer; font-weight: bold; color: var(--accent);
+    padding: 4px 6px; list-style: none;
+  }
+  .reference summary::-webkit-details-marker { display: none; }
+  .reference summary::before { content: "📄 "; }
+  .reference .scans {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 10px; margin-top: 10px;
+  }
+  .reference img {
+    width: 100%; height: auto; border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  .sheet {
+    background: var(--card); border-radius: 14px; padding: 16px;
+    box-shadow: 0 6px 18px rgba(43,45,66,0.08);
+  }
+  .sheet-title {
+    text-align: center; margin: 0 0 14px; font-size: 1.4rem;
+    border: 3px solid var(--ink); padding: 8px; border-radius: 10px;
+    background: #fffdf3; letter-spacing: 1px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+  }
+
+  .story {
+    margin-bottom: 20px;
+    padding: 14px; border-radius: 12px;
+    background: #fffdf3; border: 2px solid var(--border);
+  }
+  .story h2 {
+    margin: 0 0 10px; text-align: center;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    letter-spacing: 1px;
+    color: var(--accent);
+  }
+  .panels {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+  }
+  .panel {
+    background: #fff; padding: 12px; border-radius: 10px;
+    border: 1.5px solid var(--border);
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .panel .pnum {
+    display: inline-block; width: 28px; height: 28px; line-height: 28px;
+    text-align: center; background: var(--accent-2); color: #fff;
+    border-radius: 999px; font-weight: bold;
+  }
+  .panel p { margin: 0; line-height: 1.4; }
+  .panel b { background: #fff4e0; padding: 0 3px; border-radius: 3px; }
+
+  .grid {
+    display: grid; grid-template-columns: 1fr; gap: 0;
+    border: 2px solid var(--cell-border); border-radius: 6px; overflow: hidden;
+  }
+  .box {
+    padding: 14px; border-bottom: 1px solid var(--cell-border);
+    background: var(--cell);
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .box:last-child { border-bottom: none; }
+  .qnum {
+    display: inline-block; width: 30px; height: 30px; line-height: 30px;
+    text-align: center; background: var(--accent); color: #fff;
+    border-radius: 999px; font-weight: bold; margin-right: 6px;
+  }
+  .prompt { font-weight: bold; margin: 0; }
+
+  .choices { display: flex; flex-direction: column; gap: 6px; }
+  .choice {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 10px; border: 2px solid var(--border);
+    border-radius: 10px; cursor: pointer; background: #fff;
+  }
+  .choice input { width: 20px; height: 20px; cursor: pointer; }
+  .choice:hover { border-color: var(--accent-2); }
+  .choice.checked { background: #fff4e0; border-color: var(--accent-3); }
+  .choice .letter {
+    display: inline-block; width: 22px; font-weight: bold; color: var(--accent);
+  }
+
+  .footer-actions {
+    margin-top: 16px; display: flex; justify-content: center; gap: 10px;
+    padding-top: 12px; border-top: 2px dashed var(--border);
+  }
+  .status { color: var(--muted); font-size: 0.9rem; margin-left: 8px; }
+
+  @media (max-width: 680px) {
+    .panels { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body data-sheet="eng-unit2">
+  <div class="topbar">
+    <a class="btn ghost small" href="../../../index.html">🏠 Home</a>
+    <h1>Grade 4 — Unit 2 Assessment</h1>
+    <span class="spacer"></span>
+    <button class="btn secondary small" id="saveBtn">💾 Save</button>
+    <button class="btn ghost small" id="clearBtn">🧽 Clear</button>
+    <button class="btn ghost small" id="printBtn">🖨 Print</button>
+    <span class="status" id="status"></span>
+  </div>
+
+  <section class="reference">
+    <details>
+      <summary>Show the original assessment pages</summary>
+      <div class="scans">
+        <img src="grdase4-unit2-assessment-1.jpeg" alt="Assessment page 1">
+        <img src="grdase4-unit2-assessment-2.jpeg" alt="Assessment page 2">
+        <img src="grdase4-unit2-assessment-3.jpeg" alt="Assessment page 3">
+        <img src="grdase4-unit2-assessment-4.jpeg" alt="Assessment page 4">
+        <img src="grdase4-unit2-assessment-5.jpeg" alt="Assessment page 5">
+      </div>
+    </details>
+  </section>
+
+  <section class="sheet">
+    <h2 class="sheet-title">READ THE TEXT. THEN ANSWER THE QUESTIONS.</h2>
+
+    <div class="story">
+      <h2>The Cracked Jug</h2>
+      <div class="panels">
+        <div class="panel">
+          <span class="pnum">1</span>
+          <p>Once there lived a young woman who traveled on foot to a water well. Carrying two <b>jugs</b>, which looked like pots, she walked along the same road every day. Her two jugs looked very similar, but one had an unfortunate crack from its middle to its base.</p>
+        </div>
+        <div class="panel">
+          <span class="pnum">2</span>
+          <p>One evening, the jug without a crack boasted rather cruelly to the cracked jug, "Our owner prefers me over you, you know. I am perfect, and not flawed and cracked like you."</p>
+        </div>
+        <div class="panel">
+          <span class="pnum">3</span>
+          <p>"Flawed?" questioned the cracked jug. "Whatever do you mean? I don't believe I've done anything wrong to displease our lovely owner."</p>
+        </div>
+        <div class="panel">
+          <span class="pnum">4</span>
+          <p>The jug without a crack sneered. "Foolish jug! You are cracked! Water drips out of you, and by the time we arrive home, your <b>contents</b> are gone! There's not a drop of water left in you for our owner to wash or cook with or to drink."</p>
+        </div>
+        <div class="panel">
+          <span class="pnum">5</span>
+          <p>The cracked jug felt powerfully wounded by these nasty comments. He had always been so proud to serve their owner, but he now realized that all this time, all these years, he had failed her — he'd been disappointing her all along.</p>
+        </div>
+        <div class="panel">
+          <span class="pnum">6</span>
+          <p>The next day, the cracked jug struggled bravely to hold in all the water, but, alas, he could not. The water still dripped, dripped, dripped out. Feeling shame, the jug mumbled to his owner, "I am so sorry for letting you down."</p>
+        </div>
+        <div class="panel">
+          <span class="pnum">7</span>
+          <p>The young woman just smiled gratefully at the cracked jug as she pointed to the sides of the road. She said, "Dearest jug, do you see all of the wonderful flowers along the road? Do you know that I have been <b>scattering</b> and planting the seeds for those flowers?"</p>
+        </div>
+        <div class="panel">
+          <span class="pnum">8</span>
+          <p>"And every day as I walk from the <b>entrance</b> of the walkway to this very spot, I water the blossoming flowers with you, my dear cracked jug! Everyone on this road enjoys the flowers that you water. Do you not see that, without you, there would be no beautiful flowers at all!"</p>
+          <p>The two jugs regarded each other in a new light. They realized that they were both perfect in their own way.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="box">
+        <p class="prompt"><span class="qnum">1</span>In Panel 2, what does the boasting by the jug without a crack reveal about him?</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="q1" value="A"><span><span class="letter">A</span>He likes to talk all the time.</span></label>
+          <label class="choice"><input type="radio" name="q1" value="B"><span><span class="letter">B</span>He wants the other jug to like him.</span></label>
+          <label class="choice"><input type="radio" name="q1" value="C"><span><span class="letter">C</span>He thinks he is better than the other jug.</span></label>
+          <label class="choice"><input type="radio" name="q1" value="D"><span><span class="letter">D</span>He respects the difference between the two jugs.</span></label>
+        </div>
+      </div>
+
+      <div class="box">
+        <p class="prompt"><span class="qnum">2</span>In Panel 4, what character trait does the jug without a crack show through his words and actions?</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="q2" value="A"><span><span class="letter">A</span>He is quick to anger.</span></label>
+          <label class="choice"><input type="radio" name="q2" value="B"><span><span class="letter">B</span>He finds fault in others.</span></label>
+          <label class="choice"><input type="radio" name="q2" value="C"><span><span class="letter">C</span>He likes to give advice.</span></label>
+          <label class="choice"><input type="radio" name="q2" value="D"><span><span class="letter">D</span>He shows concern for others.</span></label>
+        </div>
+      </div>
+
+      <div class="box">
+        <p class="prompt"><span class="qnum">3</span>What does the jug without a crack mean when he says to the other jug, "You are cracked!"?</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="q3" value="A"><span><span class="letter">A</span>The cracked jug looks old and tired.</span></label>
+          <label class="choice"><input type="radio" name="q3" value="B"><span><span class="letter">B</span>The cracked jug has many wrong ideas.</span></label>
+          <label class="choice"><input type="radio" name="q3" value="C"><span><span class="letter">C</span>The cracked jug should be thrown away.</span></label>
+          <label class="choice"><input type="radio" name="q3" value="D"><span><span class="letter">D</span>The cracked jug is of little use to their owner.</span></label>
+        </div>
+      </div>
+
+      <div class="box">
+        <p class="prompt"><span class="qnum">4</span>In Panel 5, what does the word <u>wounded</u> show about the cracked jug?</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="q4" value="A"><span><span class="letter">A</span>He wants to make his crack go away.</span></label>
+          <label class="choice"><input type="radio" name="q4" value="B"><span><span class="letter">B</span>He has an injury that gives him pain.</span></label>
+          <label class="choice"><input type="radio" name="q4" value="C"><span><span class="letter">C</span>He does not understand what the other jug says.</span></label>
+          <label class="choice"><input type="radio" name="q4" value="D"><span><span class="letter">D</span>He is upset when he realizes what the other jug means.</span></label>
+        </div>
+      </div>
+
+      <div class="box">
+        <p class="prompt"><span class="qnum">5</span>Which word from Panels 5 and 6 shows that the cracked jug wants to please his owner?</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="q5" value="A"><span><span class="letter">A</span>"realized"</span></label>
+          <label class="choice"><input type="radio" name="q5" value="B"><span><span class="letter">B</span>"failed"</span></label>
+          <label class="choice"><input type="radio" name="q5" value="C"><span><span class="letter">C</span>"struggled"</span></label>
+          <label class="choice"><input type="radio" name="q5" value="D"><span><span class="letter">D</span>"dripped"</span></label>
+        </div>
+      </div>
+
+      <div class="box">
+        <p class="prompt"><span class="qnum">6</span>Why did the woman smile at the cracked jug after the jug said he was sorry?</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="q6" value="A"><span><span class="letter">A</span>She was amused by what the cracked jug said.</span></label>
+          <label class="choice"><input type="radio" name="q6" value="B"><span><span class="letter">B</span>She knew the cracked jug could never do his job.</span></label>
+          <label class="choice"><input type="radio" name="q6" value="C"><span><span class="letter">C</span>She was glad the cracked jug understood his problem.</span></label>
+          <label class="choice"><input type="radio" name="q6" value="D"><span><span class="letter">D</span>She knew the cracked jug had served a good purpose.</span></label>
+        </div>
+      </div>
+
+      <div class="box">
+        <p class="prompt"><span class="qnum">7</span>How does the woman show that she is a caring person?</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="q7" value="A"><span><span class="letter">A</span>She speaks to the jugs in a polite manner.</span></label>
+          <label class="choice"><input type="radio" name="q7" value="B"><span><span class="letter">B</span>She plants flowers for other people to enjoy.</span></label>
+          <label class="choice"><input type="radio" name="q7" value="C"><span><span class="letter">C</span>She brings water from the well for other people.</span></label>
+          <label class="choice"><input type="radio" name="q7" value="D"><span><span class="letter">D</span>She makes sure the two jugs are in good condition.</span></label>
+        </div>
+      </div>
+
+      <div class="box">
+        <p class="prompt"><span class="qnum">8</span>What do the jugs understand at the end of the story?</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="q8" value="A"><span><span class="letter">A</span>They both can be useful in different ways.</span></label>
+          <label class="choice"><input type="radio" name="q8" value="B"><span><span class="letter">B</span>They have an owner who treats them well.</span></label>
+          <label class="choice"><input type="radio" name="q8" value="C"><span><span class="letter">C</span>Everyone must work together to create beauty.</span></label>
+          <label class="choice"><input type="radio" name="q8" value="D"><span><span class="letter">D</span>All problems can be solved by talking about them.</span></label>
+        </div>
+      </div>
+
+      <div class="box">
+        <p class="prompt"><span class="qnum">9</span>What does a recording of the story help listeners understand better?</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="q9" value="A"><span><span class="letter">A</span>the way the jugs look at each other</span></label>
+          <label class="choice"><input type="radio" name="q9" value="B"><span><span class="letter">B</span>the size of the crack in one of the jugs</span></label>
+          <label class="choice"><input type="radio" name="q9" value="C"><span><span class="letter">C</span>the sound of the water dripping from the cracked jug</span></label>
+          <label class="choice"><input type="radio" name="q9" value="D"><span><span class="letter">D</span>the emotions of the jugs when they speak to each other</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-actions">
+      <a class="btn ghost" href="../../../index.html">🏠 Back to Home</a>
+    </div>
+  </section>
+
+<script>
+(function () {
+  const sheetId = document.body.dataset.sheet || 'default';
+  const storageKey = 'sheenaz-eng-' + sheetId;
+
+  function fields() {
+    return document.querySelectorAll('input[type=radio], input[type=checkbox]');
+  }
+
+  function save() {
+    const data = {};
+    fields().forEach((el, i) => {
+      const key = el.name || ('f' + i);
+      data[key + '::' + el.value] = el.checked;
+    });
+    try {
+      localStorage.setItem(storageKey, JSON.stringify(data));
+      setStatus('Saved ✓');
+    } catch (e) {
+      setStatus('Could not save: ' + e.message);
+    }
+  }
+
+  function load() {
+    let data;
+    try { data = JSON.parse(localStorage.getItem(storageKey) || '{}'); }
+    catch { data = {}; }
+    fields().forEach((el, i) => {
+      const key = el.name || ('f' + i);
+      const k = key + '::' + el.value;
+      if (data[k] !== undefined) el.checked = !!data[k];
+    });
+    syncChoices();
+  }
+
+  function clearAll() {
+    if (!confirm('Erase all your answers on this page?')) return;
+    localStorage.removeItem(storageKey);
+    fields().forEach(el => { el.checked = false; });
+    syncChoices();
+    setStatus('Cleared.');
+  }
+
+  function syncChoices() {
+    document.querySelectorAll('.choice').forEach(c => {
+      const input = c.querySelector('input');
+      if (input) c.classList.toggle('checked', !!input.checked);
+    });
+  }
+
+  function setStatus(msg) {
+    const s = document.getElementById('status');
+    if (!s) return;
+    s.textContent = msg;
+    clearTimeout(setStatus._t);
+    setStatus._t = setTimeout(() => { s.textContent = ''; }, 2500);
+  }
+
+  let autosaveTimer;
+  document.addEventListener('change', () => {
+    syncChoices();
+    clearTimeout(autosaveTimer);
+    autosaveTimer = setTimeout(save, 200);
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    load();
+    document.getElementById('saveBtn').addEventListener('click', save);
+    document.getElementById('clearBtn').addEventListener('click', clearAll);
+    document.getElementById('printBtn').addEventListener('click', () => window.print());
+  });
+})();
+</script>
+</body>
+</html>
