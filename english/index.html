@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English — Sheenaz's Learning Hub</title>
+<style>
+  :root {
+    --bg-1: #ffd5e5;
+    --bg-2: #fff2b2;
+    --ink: #2b2d42;
+    --muted: #6c7281;
+    --card: #ffffff;
+    --accent: #ffb347;
+    --border: #e3e1d7;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Comic Sans MS', 'Trebuchet MS', system-ui, sans-serif;
+    color: var(--ink);
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at 10% 10%, var(--bg-1) 0%, transparent 45%),
+      radial-gradient(circle at 90% 90%, var(--bg-2) 0%, transparent 45%),
+      linear-gradient(180deg, #fff 0%, #f6f9ff 100%);
+  }
+  .topbar {
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 18px 20px 0;
+  }
+  .btn-back {
+    display: inline-block; padding: 6px 14px; border-radius: 999px;
+    background: #fff; color: var(--ink); text-decoration: none;
+    border: 2px solid var(--border);
+    font-weight: bold; font-size: 0.9rem;
+    box-shadow: 0 2px 6px rgba(43,45,66,0.06);
+  }
+  .btn-back:hover { border-color: var(--accent); }
+  header {
+    text-align: center;
+    padding: 24px 20px 8px;
+  }
+  header h1 {
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--accent);
+    letter-spacing: 1px;
+  }
+  header p {
+    margin: 10px 0 0;
+    opacity: 0.75;
+  }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 16px 20px 60px;
+  }
+  ul.list {
+    list-style: none;
+    margin: 0; padding: 0;
+    display: flex; flex-direction: column;
+    gap: 10px;
+  }
+  ul.list a {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 18px;
+    background: var(--card);
+    border-radius: 14px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 4px 12px rgba(43,45,66,0.06);
+    border-left: 6px solid var(--accent);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  ul.list a:hover {
+    transform: translateX(4px);
+    box-shadow: 0 6px 18px rgba(43,45,66,0.12);
+  }
+  ul.list .ic { font-size: 1.6rem; line-height: 1; width: 2rem; text-align: center; flex-shrink: 0; }
+  ul.list .txt { display: flex; flex-direction: column; gap: 2px; }
+  ul.list .title { font-weight: bold; font-size: 1.05rem; }
+  ul.list .sub { font-size: 0.85rem; color: var(--muted); }
+  ul.list .arrow { margin-left: auto; color: var(--accent); font-weight: bold; }
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.85rem;
+    opacity: 0.55;
+  }
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <a class="btn-back" href="../index.html">🏠 Home</a>
+  </div>
+
+  <header>
+    <h1>📚 English</h1>
+    <p>Pick something to read and answer.</p>
+  </header>
+
+  <main>
+    <ul class="list">
+      <li>
+        <a href="Grade4-English/Unit2%20Assessment/index.html">
+          <span class="ic">📖</span>
+          <span class="txt">
+            <span class="title">Unit 2 Assessment</span>
+            <span class="sub">"The Cracked Jug" — 9 questions</span>
+          </span>
+          <span class="arrow">→</span>
+        </a>
+      </li>
+      <li>
+        <a href="Grade4-English/grade4-unit2-week1-assessment/index.html">
+          <span class="ic">🌾</span>
+          <span class="txt">
+            <span class="title">Unit 2, Week 1 Assessment</span>
+            <span class="sub">"How Dorothy Saved the Scarecrow" — 4 MC + paragraph</span>
+          </span>
+          <span class="arrow">→</span>
+        </a>
+      </li>
+      <li>
+        <a href="Grade4-English/sheenaz-english-hw-20261112/index.html">
+          <span class="ic">🦀</span>
+          <span class="txt">
+            <span class="title">English HW — 11/12</span>
+            <span class="sub">"The Crab That Played with the Sea" by Rudyard Kipling</span>
+          </span>
+          <span class="arrow">→</span>
+        </a>
+      </li>
+    </ul>
+  </main>
+
+  <footer>
+    Made with ❤️ for Sheenaz
+  </footer>
+</body>
+</html>
