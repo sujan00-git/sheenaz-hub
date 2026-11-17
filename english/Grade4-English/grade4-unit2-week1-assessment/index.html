@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grade 4 — Unit 2, Week 1 Assessment: How Dorothy Saved the Scarecrow</title>
+<style>
+  :root {
+    --bg: #fdfcf7;
+    --ink: #2b2d42;
+    --muted: #6c7281;
+    --accent: #ff4d94;
+    --accent-2: #4dc3ff;
+    --accent-3: #ffb347;
+    --accent-4: #7ad67a;
+    --card: #ffffff;
+    --border: #e3e1d7;
+    --cell: #fffdf3;
+    --cell-border: #333;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Comic Sans MS', 'Trebuchet MS', system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    padding: 12px 16px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .topbar {
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    padding: 10px 14px; margin-bottom: 10px;
+    background: var(--card); border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(43,45,66,0.08);
+    position: sticky; top: 8px; z-index: 20;
+  }
+  .topbar h1 {
+    margin: 0; font-size: 1.1rem;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .topbar .spacer { flex: 1; }
+  .btn {
+    display: inline-block; padding: 8px 14px; border-radius: 999px;
+    background: var(--accent); color: #fff; text-decoration: none; border: none;
+    font: inherit; font-weight: bold; cursor: pointer;
+    box-shadow: 0 2px 6px rgba(255,77,148,0.35);
+  }
+  .btn.secondary { background: var(--accent-2); box-shadow: 0 2px 6px rgba(77,195,255,0.35); }
+  .btn.ghost { background: transparent; color: var(--ink); border: 2px solid var(--border); box-shadow: none; }
+  .btn.small { padding: 5px 10px; font-size: 0.85rem; }
+  .btn + .btn { margin-left: 4px; }
+  .btn:hover { filter: brightness(1.06); }
+
+  .reference {
+    background: var(--card); border-radius: 14px; padding: 10px;
+    box-shadow: 0 6px 18px rgba(43,45,66,0.08); margin-bottom: 14px;
+  }
+  .reference details { text-align: left; }
+  .reference summary {
+    cursor: pointer; font-weight: bold; color: var(--accent);
+    padding: 4px 6px; list-style: none;
+  }
+  .reference summary::-webkit-details-marker { display: none; }
+  .reference summary::before { content: "📄 "; }
+  .reference .scans {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 10px; margin-top: 10px;
+  }
+  .reference img {
+    width: 100%; height: auto; border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  .sheet {
+    background: var(--card); border-radius: 14px; padding: 16px;
+    box-shadow: 0 6px 18px rgba(43,45,66,0.08);
+    margin-bottom: 16px;
+  }
+  .sheet-title {
+    text-align: center; margin: 0 0 14px; font-size: 1.4rem;
+    border: 3px solid var(--ink); padding: 8px; border-radius: 10px;
+    background: #fffdf3; letter-spacing: 1px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+  }
+
+  .story {
+    margin-bottom: 20px;
+    padding: 14px; border-radius: 12px;
+    background: #fffdf3; border: 2px solid var(--border);
+  }
+  .story h2 {
+    margin: 0 0 4px; text-align: center;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    letter-spacing: 1px;
+    color: var(--accent);
+  }
+  .story .byline {
+    text-align: center; margin: 0 0 14px;
+    font-size: 0.95rem; color: var(--muted); font-style: italic;
+  }
+  .panels {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+  }
+  .panel {
+    background: #fff; padding: 12px; border-radius: 10px;
+    border: 1.5px solid var(--border);
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .panel .pnum {
+    display: inline-block; width: 28px; height: 28px; line-height: 28px;
+    text-align: center; background: var(--accent-2); color: #fff;
+    border-radius: 999px; font-weight: bold;
+  }
+  .panel p { margin: 0; line-height: 1.4; }
+  .panel b { background: #fff4e0; padding: 0 3px; border-radius: 3px; }
+
+  .grid {
+    display: grid; grid-template-columns: 1fr; gap: 0;
+    border: 2px solid var(--cell-border); border-radius: 6px; overflow: hidden;
+  }
+  .box {
+    padding: 14px; border-bottom: 1px solid var(--cell-border);
+    background: var(--cell);
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .box:last-child { border-bottom: none; }
+  .qnum {
+    display: inline-block; width: 30px; height: 30px; line-height: 30px;
+    text-align: center; background: var(--accent); color: #fff;
+    border-radius: 999px; font-weight: bold; margin-right: 6px;
+  }
+  .prompt { font-weight: bold; margin: 0; }
+
+  .choices { display: flex; flex-direction: column; gap: 6px; }
+  .choice {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 10px; border: 2px solid var(--border);
+    border-radius: 10px; cursor: pointer; background: #fff;
+  }
+  .choice input { width: 20px; height: 20px; cursor: pointer; }
+  .choice:hover { border-color: var(--accent-2); }
+  .choice.checked { background: #fff4e0; border-color: var(--accent-3); }
+  .choice .letter {
+    display: inline-block; width: 22px; font-weight: bold; color: var(--accent);
+  }
+
+  .wordbox {
+    display: inline-block;
+    margin: 6px 0 10px;
+    padding: 10px 14px;
+    border: 2px solid var(--ink);
+    border-radius: 10px;
+    background: #fff;
+    font-family: inherit;
+  }
+  .wordbox .wb-title {
+    font-size: 0.8rem; color: var(--muted);
+    display: block; margin-bottom: 4px; letter-spacing: 1px;
+  }
+  .wordbox ul {
+    margin: 0; padding: 0; list-style: none;
+    display: flex; flex-wrap: wrap; gap: 8px 16px;
+  }
+  .wordbox li { font-weight: bold; }
+
+  textarea.paragraph {
+    width: 100%; min-height: 220px;
+    padding: 10px 12px;
+    border: 2px solid var(--accent-2); border-radius: 10px;
+    background: #f5fbff;
+    font-family: inherit; font-size: 1rem; line-height: 1.5;
+    color: var(--ink);
+    resize: vertical;
+  }
+
+  .footer-actions {
+    margin-top: 16px; display: flex; justify-content: center; gap: 10px;
+    padding-top: 12px; border-top: 2px dashed var(--border);
+  }
+  .status { color: var(--muted); font-size: 0.9rem; margin-left: 8px; }
+
+  @media (max-width: 680px) {
+    .panels { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body data-sheet="eng-unit2-wk1">
+  <div class="topbar">
+    <a class="btn ghost small" href="../../../index.html">🏠 Home</a>
+    <h1>Grade 4 — Unit 2, Week 1 Assessment</h1>
+    <span class="spacer"></span>
+    <button class="btn secondary small" id="saveBtn">💾 Save</button>
+    <button class="btn ghost small" id="clearBtn">🧽 Clear</button>
+    <button class="btn ghost small" id="printBtn">🖨 Print</button>
+    <span class="status" id="status"></span>
+  </div>
+
+  <section class="reference">
+    <details>
+      <summary>Show the original assessment pages</summary>
+      <div class="scans">
+        <img src="gr2-unit-week1-assessment-1.jpeg" alt="Assessment page 1">
+        <img src="gr2-unit-week1-assessment-2.jpeg" alt="Assessment page 2">
+        <img src="gr2-unit-week1-assessment-3.jpeg" alt="Assessment page 3">
+        <img src="gr2-unit-week1-assessment-4.jpeg" alt="Assessment page 4">
+        <img src="gr2-unit-week1-assessment-5.jpeg" alt="Assessment page 5">
+        <img src="gr2-unit-week1-assessment-6.jpeg" alt="Assessment page 6">
+      </div>
+    </details>
+  </section>
+
+  <section class="sheet">
+    <h2 class="sheet-title">READ THE TEXT. THEN ANSWER THE QUESTIONS.</h2>
+
+    <div class="story">
+      <h2>How Dorothy Saved the Scarecrow</h2>
+      <p class="byline">from <i>The Wonderful Wizard of Oz</i> &nbsp;·&nbsp; by L. Frank Baum</p>
+
+      <div class="panels">
+        <div class="panel">
+          <span class="pnum">1</span>
+          <p>While Dorothy was looking <b>earnestly</b> into the odd, painted face of the Scarecrow, she was surprised to see one of the eyes slowly wink at her. She thought she must have been mistaken at first, for none of the scarecrows in Kansas ever wink, but presently the figure nodded its head to her in a friendly way.</p>
+        </div>
+
+        <div class="panel">
+          <span class="pnum">2</span>
+          <p>Then she climbed down from the fence and walked up to it, while Toto ran around the pole and barked.</p>
+          <p>"Good day," said the Scarecrow, in a rather husky voice.</p>
+          <p>"Did you speak?" asked the girl, in wonder.</p>
+          <p>"Certainly," answered the Scarecrow. "How do you do?"</p>
+          <p>"I'm pretty well, thank you," replied Dorothy politely. "How do you do?"</p>
+        </div>
+
+        <div class="panel">
+          <span class="pnum">3</span>
+          <p>"I'm not feeling well," said the Scarecrow. "It is very <b>tedious</b> being <b>perched</b> up here." The Scarecrow was used to scare away crows.</p>
+        </div>
+
+        <div class="panel">
+          <span class="pnum">4</span>
+          <p>"Can't you get down?" asked Dorothy.</p>
+          <p>"No, for this pole is stuck up my back. If you will please take away the pole, I shall be greatly obliged to you."</p>
+        </div>
+
+        <div class="panel">
+          <span class="pnum">5</span>
+          <p>Dorothy reached up both arms and lifted the figure off the pole, for, being stuffed with straw, it was quite light.</p>
+          <p>"Thank you very much," said the Scarecrow, when he had been set down on the ground. "I feel like a new man." Dorothy was <b>puzzled</b> at this, for it sounded odd to hear a stuffed man speak, and to see him bow and walk alongside her.</p>
+        </div>
+
+        <div class="panel">
+          <span class="pnum">6</span>
+          <p>"Who are you?" asked the Scarecrow when he had stretched himself and yawned. "And where are you going?"</p>
+          <p>"My name is Dorothy," said the girl, "and I am going to Emerald City, to ask the Great Oz to send me back to Kansas."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="box">
+        <p class="prompt"><span class="qnum">1</span>In Panel 1, what does the use of the word <u>nodded</u> suggest about the Scarecrow?</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="q1" value="A"><span><span class="letter">A</span>that he will be welcoming to Dorothy</span></label>
+          <label class="choice"><input type="radio" name="q1" value="B"><span><span class="letter">B</span>that he agrees with what Dorothy is doing</span></label>
+          <label class="choice"><input type="radio" name="q1" value="C"><span><span class="letter">C</span>that he needs Dorothy's help to fix his head</span></label>
+          <label class="choice"><input type="radio" name="q1" value="D"><span><span class="letter">D</span>that he wants Dorothy to look in another direction</span></label>
+        </div>
+      </div>
+
+      <div class="box">
+        <p class="prompt"><span class="qnum">2</span>In Panel 2, what does the phrase "in wonder" show about Dorothy's feelings?</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="q2" value="A"><span><span class="letter">A</span>She is eager to continue her journey.</span></label>
+          <label class="choice"><input type="radio" name="q2" value="B"><span><span class="letter">B</span>She wants to learn more about Scarecrow.</span></label>
+          <label class="choice"><input type="radio" name="q2" value="C"><span><span class="letter">C</span>She does not understand what Scarecrow is saying.</span></label>
+          <label class="choice"><input type="radio" name="q2" value="D"><span><span class="letter">D</span>She is surprised by something she has not seen before.</span></label>
+        </div>
+      </div>
+
+      <div class="box">
+        <p class="prompt"><span class="qnum">3</span>In Panel 5, what do Dorothy's actions of reaching up and lifting the Scarecrow off the pole show about her?</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="q3" value="A"><span><span class="letter">A</span>that she is weak</span></label>
+          <label class="choice"><input type="radio" name="q3" value="B"><span><span class="letter">B</span>that she is afraid</span></label>
+          <label class="choice"><input type="radio" name="q3" value="C"><span><span class="letter">C</span>that she is helpful</span></label>
+          <label class="choice"><input type="radio" name="q3" value="D"><span><span class="letter">D</span>that she is amused</span></label>
+        </div>
+      </div>
+
+      <div class="box">
+        <p class="prompt"><span class="qnum">4</span>How does the Scarecrow show that he is curious?</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="q4" value="A"><span><span class="letter">A</span>by asking questions</span></label>
+          <label class="choice"><input type="radio" name="q4" value="B"><span><span class="letter">B</span>by speaking in a kind way</span></label>
+          <label class="choice"><input type="radio" name="q4" value="C"><span><span class="letter">C</span>by asking Dorothy for help</span></label>
+          <label class="choice"><input type="radio" name="q4" value="D"><span><span class="letter">D</span>by explaining about the pole</span></label>
+        </div>
+      </div>
+
+      <div class="box">
+        <p class="prompt"><span class="qnum">5</span>Write a paragraph that describes what Dorothy's actions reveal about her. Support your answer with details from the text, and include at least <u>two</u> of the words provided in the box below in your answer.</p>
+        <div class="wordbox">
+          <span class="wb-title">WORD BOX</span>
+          <ul>
+            <li>earnestly</li>
+            <li>perched</li>
+            <li>puzzled</li>
+            <li>tedious</li>
+          </ul>
+        </div>
+        <textarea class="paragraph" name="q5" placeholder="Write your paragraph here..."></textarea>
+      </div>
+    </div>
+
+    <div class="footer-actions">
+      <a class="btn ghost" href="../../../index.html">🏠 Back to Home</a>
+    </div>
+  </section>
+
+<script>
+(function () {
+  const sheetId = document.body.dataset.sheet || 'default';
+  const storageKey = 'sheenaz-eng-' + sheetId;
+
+  function fields() {
+    return document.querySelectorAll('input[type=radio], input[type=checkbox], input[type=number], input[type=text], textarea');
+  }
+
+  function save() {
+    const data = {};
+    fields().forEach((el, i) => {
+      const key = el.name || ('f' + i);
+      if (el.type === 'radio' || el.type === 'checkbox') {
+        data[key + '::' + el.value] = el.checked;
+      } else {
+        data[key] = el.value;
+      }
+    });
+    try {
+      localStorage.setItem(storageKey, JSON.stringify(data));
+      setStatus('Saved ✓');
+    } catch (e) {
+      setStatus('Could not save: ' + e.message);
+    }
+  }
+
+  function load() {
+    let data;
+    try { data = JSON.parse(localStorage.getItem(storageKey) || '{}'); }
+    catch { data = {}; }
+    fields().forEach((el, i) => {
+      const key = el.name || ('f' + i);
+      if (el.type === 'radio' || el.type === 'checkbox') {
+        const k = key + '::' + el.value;
+        if (data[k] !== undefined) el.checked = !!data[k];
+      } else {
+        if (data[key] !== undefined) el.value = data[key];
+      }
+    });
+    syncChoices();
+  }
+
+  function clearAll() {
+    if (!confirm('Erase all your answers on this page?')) return;
+    localStorage.removeItem(storageKey);
+    fields().forEach(el => {
+      if (el.type === 'radio' || el.type === 'checkbox') el.checked = false;
+      else el.value = '';
+    });
+    syncChoices();
+    setStatus('Cleared.');
+  }
+
+  function syncChoices() {
+    document.querySelectorAll('.choice').forEach(c => {
+      const input = c.querySelector('input');
+      if (input) c.classList.toggle('checked', !!input.checked);
+    });
+  }
+
+  function setStatus(msg) {
+    const s = document.getElementById('status');
+    if (!s) return;
+    s.textContent = msg;
+    clearTimeout(setStatus._t);
+    setStatus._t = setTimeout(() => { s.textContent = ''; }, 2500);
+  }
+
+  let autosaveTimer;
+  document.addEventListener('input', () => {
+    clearTimeout(autosaveTimer);
+    autosaveTimer = setTimeout(save, 300);
+  });
+  document.addEventListener('change', () => {
+    syncChoices();
+    clearTimeout(autosaveTimer);
+    autosaveTimer = setTimeout(save, 200);
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    load();
+    document.getElementById('saveBtn').addEventListener('click', save);
+    document.getElementById('clearBtn').addEventListener('click', clearAll);
+    document.getElementById('printBtn').addEventListener('click', () => window.print());
+  });
+})();
+</script>
+</body>
+</html>
