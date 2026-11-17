@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Math HW 11/12 — Fractions, Jumps & Number Lines</title>
+<style>
+  :root {
+    --bg: #fdfcf7;
+    --ink: #2b2d42;
+    --muted: #6c7281;
+    --accent: #ff4d94;
+    --accent-2: #4dc3ff;
+    --accent-3: #ffb347;
+    --accent-4: #7ad67a;
+    --card: #ffffff;
+    --border: #e3e1d7;
+    --cell: #fffdf3;
+    --cell-border: #333;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Comic Sans MS', 'Trebuchet MS', system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    padding: 12px 16px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .topbar {
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    padding: 10px 14px; margin-bottom: 10px;
+    background: var(--card); border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(43,45,66,0.08);
+    position: sticky; top: 8px; z-index: 20;
+  }
+  .topbar h1 {
+    margin: 0; font-size: 1.1rem;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .topbar .spacer { flex: 1; }
+  .btn {
+    display: inline-block; padding: 8px 14px; border-radius: 999px;
+    background: var(--accent); color: #fff; text-decoration: none; border: none;
+    font: inherit; font-weight: bold; cursor: pointer;
+    box-shadow: 0 2px 6px rgba(255,77,148,0.35);
+  }
+  .btn.secondary { background: var(--accent-2); box-shadow: 0 2px 6px rgba(77,195,255,0.35); }
+  .btn.ghost { background: transparent; color: var(--ink); border: 2px solid var(--border); box-shadow: none; }
+  .btn.small { padding: 5px 10px; font-size: 0.85rem; }
+  .btn + .btn { margin-left: 4px; }
+  .btn:hover { filter: brightness(1.06); }
+
+  .reference {
+    background: var(--card); border-radius: 14px; padding: 10px;
+    box-shadow: 0 6px 18px rgba(43,45,66,0.08); margin-bottom: 14px;
+  }
+  .reference details { text-align: left; }
+  .reference summary {
+    cursor: pointer; font-weight: bold; color: var(--accent);
+    padding: 4px 6px; list-style: none;
+  }
+  .reference summary::-webkit-details-marker { display: none; }
+  .reference summary::before { content: "📄 "; }
+  .reference .scans {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 10px; margin-top: 10px;
+  }
+  .reference img {
+    width: 100%; height: auto; border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  .sheet {
+    background: var(--card); border-radius: 14px; padding: 16px;
+    box-shadow: 0 6px 18px rgba(43,45,66,0.08);
+    margin-bottom: 16px;
+  }
+  .option-tag {
+    display: inline-block;
+    background: var(--accent); color: #fff;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    letter-spacing: 1px; padding: 4px 12px;
+    border-radius: 999px; font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
+  .sheet.opt2 .option-tag { background: var(--accent-2); }
+  .sheet.opt3 .option-tag { background: var(--accent-3); }
+  .sheet.opt4 .option-tag { background: var(--accent-4); color: #0e3b1c; }
+
+  .prompt {
+    margin: 0 0 12px; line-height: 1.5; font-size: 1.05rem;
+  }
+
+  .number-line {
+    background: #fffdf3;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0 14px;
+    overflow-x: auto;
+  }
+  .number-line svg { display: block; width: 100%; height: 110px; min-width: 520px; }
+  .nl-caption {
+    font-size: 0.85rem; color: var(--muted);
+    text-align: center; margin: 4px 0 0;
+  }
+
+  table.friends {
+    border-collapse: collapse;
+    margin: 6px 0 14px;
+    width: 100%;
+    max-width: 520px;
+  }
+  table.friends th, table.friends td {
+    border: 2px solid var(--ink);
+    padding: 6px 10px;
+    text-align: left;
+    vertical-align: middle;
+  }
+  table.friends th {
+    background: var(--ink); color: #fff;
+    font-weight: bold; font-size: 0.95rem;
+  }
+  table.friends input {
+    width: 100%; border: none; background: transparent;
+    font: inherit; color: var(--ink);
+    padding: 4px 2px;
+    outline: none;
+  }
+  table.friends input:focus { background: #fff4e0; }
+
+  textarea.work {
+    width: 100%; min-height: 180px;
+    padding: 10px 12px;
+    border: 2px solid var(--accent-2); border-radius: 10px;
+    background: #f5fbff;
+    font-family: inherit; font-size: 1rem; line-height: 1.5;
+    color: var(--ink);
+    resize: vertical;
+  }
+  .field-label {
+    display: block; font-weight: bold; margin: 4px 0 6px;
+    color: var(--ink);
+  }
+
+  .footer-actions {
+    margin-top: 16px; display: flex; justify-content: center; gap: 10px;
+    padding-top: 12px; border-top: 2px dashed var(--border);
+  }
+  .status { color: var(--muted); font-size: 0.9rem; margin-left: 8px; }
+</style>
+</head>
+<body data-sheet="math-hw-20261112">
+  <div class="topbar">
+    <a class="btn ghost small" href="../../index.html">🏠 Home</a>
+    <h1>Math HW 11/12 — Fractions &amp; Number Lines</h1>
+    <span class="spacer"></span>
+    <button class="btn secondary small" id="saveBtn">💾 Save</button>
+    <button class="btn ghost small" id="clearBtn">🧽 Clear</button>
+    <button class="btn ghost small" id="printBtn">🖨 Print</button>
+    <span class="status" id="status"></span>
+  </div>
+
+  <section class="reference">
+    <details>
+      <summary>Show the original homework pages</summary>
+      <div class="scans">
+        <img src="math_hw_20261112-1.jpeg" alt="Math homework page 1 — Option 1">
+        <img src="math_hw_20261112-2.jpeg" alt="Math homework page 2 — Option 2">
+        <img src="math_hw_20261112-3.jpeg" alt="Math homework page 3 — Option 3">
+        <img src="math_hw_20261112-4.jpeg" alt="Math homework page 4 — Option 4">
+      </div>
+    </details>
+  </section>
+
+  <!-- OPTION 1 -->
+  <section class="sheet opt1">
+    <span class="option-tag">Option 1</span>
+    <p class="prompt">Create your own problem where people earn ribbons. Determine the four fractions you are going to use. Justify how you place your fractions in order through reasoning and not computation.</p>
+
+    <label class="field-label" for="opt1-problem">Your problem:</label>
+    <textarea class="work" id="opt1-problem" name="opt1-problem" placeholder="Write the story problem here..."></textarea>
+
+    <label class="field-label" for="opt1-fractions" style="margin-top:12px;">The four fractions you will use:</label>
+    <textarea class="work" id="opt1-fractions" name="opt1-fractions" style="min-height:90px;" placeholder="e.g. 1/2, 3/4, 2/3, 5/8"></textarea>
+
+    <label class="field-label" for="opt1-justify" style="margin-top:12px;">Your reasoning (no computation!) for placing them in order:</label>
+    <textarea class="work" id="opt1-justify" name="opt1-justify" placeholder="Explain how you compared the fractions using reasoning..."></textarea>
+  </section>
+
+  <!-- OPTION 2 -->
+  <section class="sheet opt2">
+    <span class="option-tag">Option 2</span>
+    <p class="prompt">Mario jumped <b>7/3 yards</b> which is shown on the number line below. Create jump distances for 2 of your friends. Add their distance to the number line too.</p>
+
+    <table class="friends">
+      <thead>
+        <tr>
+          <th>Your Friend's Name</th>
+          <th>Distance (yards)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="text" name="opt2-name1" placeholder="Name"></td>
+          <td><input type="text" name="opt2-dist1" placeholder="e.g. 2 yd or 5/2"></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="opt2-name2" placeholder="Name"></td>
+          <td><input type="text" name="opt2-dist2" placeholder="e.g. 2 yd or 5/2"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="number-line" aria-label="Number line marked at 7/3">
+      <!-- Scale: length 900, so 1 yard = 900/3 = 300 units if 3 yards total.
+           Mario's jump at 7/3 → x = 7/3 * 300 = 700 -->
+      <svg viewBox="0 0 960 110" xmlns="http://www.w3.org/2000/svg">
+        <line x1="30" y1="60" x2="930" y2="60" stroke="#2b2d42" stroke-width="3"/>
+        <!-- end caps -->
+        <rect x="24" y="52" width="12" height="16" fill="#2b2d42"/>
+        <rect x="924" y="52" width="12" height="16" fill="#2b2d42"/>
+        <!-- 7/3 tick -->
+        <line x1="730" y1="48" x2="730" y2="72" stroke="#2b2d42" stroke-width="3"/>
+        <text x="730" y="92" text-anchor="middle" font-size="18" font-family="Arial, sans-serif" fill="#2b2d42">7/3</text>
+        <!-- optional light thirds ticks for reference -->
+        <g stroke="#8a8a8a" stroke-width="1">
+          <line x1="130" y1="55" x2="130" y2="65"/>
+          <line x1="230" y1="55" x2="230" y2="65"/>
+          <line x1="330" y1="55" x2="330" y2="65"/>
+          <line x1="430" y1="55" x2="430" y2="65"/>
+          <line x1="530" y1="55" x2="530" y2="65"/>
+          <line x1="630" y1="55" x2="630" y2="65"/>
+          <line x1="830" y1="55" x2="830" y2="65"/>
+        </g>
+      </svg>
+      <p class="nl-caption">Mario's jump is marked at 7/3. Draw your friends' jumps on the printable copy, then describe them below.</p>
+    </div>
+
+    <label class="field-label" for="opt2-explain">Where would you place each friend's jump? Explain your reasoning:</label>
+    <textarea class="work" id="opt2-explain" name="opt2-explain" placeholder="e.g. My friend jumped 2 yards, which is 6/3, so their mark goes just to the left of Mario's..."></textarea>
+  </section>
+
+  <!-- OPTION 3 -->
+  <section class="sheet opt3">
+    <span class="option-tag">Option 3</span>
+    <p class="prompt">Mario jumped <b>1&nbsp;1/3 yards</b> which is shown on the number line below. Create jump distances for 3 of your friends in <b>twelfths, fourths, and/or sixths</b>. Add their distances to the number line, too.</p>
+
+    <table class="friends">
+      <thead>
+        <tr>
+          <th>Your Friend's Name</th>
+          <th>Distance (yards)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="text" name="opt3-name1" placeholder="Name"></td>
+          <td><input type="text" name="opt3-dist1" placeholder="in 12ths / 4ths / 6ths"></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="opt3-name2" placeholder="Name"></td>
+          <td><input type="text" name="opt3-dist2" placeholder="in 12ths / 4ths / 6ths"></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="opt3-name3" placeholder="Name"></td>
+          <td><input type="text" name="opt3-dist3" placeholder="in 12ths / 4ths / 6ths"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="number-line" aria-label="Number line from 0 to 2 with 1 1/3 marked">
+      <!-- 0 at x=30, 2 at x=930. Width per unit = 450. 1 1/3 = 4/3 → x = 30 + 4/3 * 450 = 30 + 600 = 630 -->
+      <svg viewBox="0 0 960 110" xmlns="http://www.w3.org/2000/svg">
+        <line x1="30" y1="60" x2="930" y2="60" stroke="#2b2d42" stroke-width="3"/>
+        <!-- end caps -->
+        <line x1="30" y1="48" x2="30" y2="72" stroke="#2b2d42" stroke-width="3"/>
+        <text x="30" y="92" text-anchor="middle" font-size="18" font-family="Arial, sans-serif" fill="#2b2d42">0</text>
+        <!-- 1 1/3 tick with dot -->
+        <line x1="630" y1="48" x2="630" y2="72" stroke="#2b2d42" stroke-width="3"/>
+        <circle cx="630" cy="60" r="5" fill="#2b2d42"/>
+        <text x="630" y="96" text-anchor="middle" font-size="16" font-family="Arial, sans-serif" fill="#2b2d42">1 1/3</text>
+        <!-- twelfths grid ticks: every 1/12 yd = 450/12 = 37.5 units, from x=30 to x=930 (24 ticks) -->
+        <g stroke="#8a8a8a" stroke-width="1">
+          <line x1="67.5"  y1="54" x2="67.5"  y2="66"/>
+          <line x1="105"   y1="54" x2="105"   y2="66"/>
+          <line x1="142.5" y1="54" x2="142.5" y2="66"/>
+          <line x1="180"   y1="54" x2="180"   y2="66"/>
+          <line x1="217.5" y1="54" x2="217.5" y2="66"/>
+          <line x1="255"   y1="54" x2="255"   y2="66"/>
+          <line x1="292.5" y1="54" x2="292.5" y2="66"/>
+          <line x1="330"   y1="54" x2="330"   y2="66"/>
+          <line x1="367.5" y1="54" x2="367.5" y2="66"/>
+          <line x1="405"   y1="54" x2="405"   y2="66"/>
+          <line x1="442.5" y1="54" x2="442.5" y2="66"/>
+          <line x1="480"   y1="54" x2="480"   y2="66"/>
+          <line x1="517.5" y1="54" x2="517.5" y2="66"/>
+          <line x1="555"   y1="54" x2="555"   y2="66"/>
+          <line x1="592.5" y1="54" x2="592.5" y2="66"/>
+          <line x1="667.5" y1="54" x2="667.5" y2="66"/>
+          <line x1="705"   y1="54" x2="705"   y2="66"/>
+          <line x1="742.5" y1="54" x2="742.5" y2="66"/>
+          <line x1="780"   y1="54" x2="780"   y2="66"/>
+          <line x1="817.5" y1="54" x2="817.5" y2="66"/>
+          <line x1="855"   y1="54" x2="855"   y2="66"/>
+          <line x1="892.5" y1="54" x2="892.5" y2="66"/>
+        </g>
+      </svg>
+      <p class="nl-caption">Mario's jump is marked at 1&nbsp;1/3. The small ticks are twelfths.</p>
+    </div>
+
+    <label class="field-label" for="opt3-explain">Where would you place each friend's jump? Explain your reasoning:</label>
+    <textarea class="work" id="opt3-explain" name="opt3-explain" placeholder="e.g. My friend jumped 3/4 yd. 3/4 = 9/12, so I counted 9 small ticks from 0..."></textarea>
+  </section>
+
+  <!-- OPTION 4 -->
+  <section class="sheet opt4">
+    <span class="option-tag">Option 4</span>
+    <p class="prompt">Mario jumped <b>7/3 yards</b> during the competition. Kelly jumped <b>2&nbsp;1/5 yards</b>. Kelly thinks she jumped the farthest. Mario thinks he jumped the farthest. Who is right? How could you convince Mario and Kelly?</p>
+
+    <label class="field-label" for="opt4-answer">Your answer &amp; explanation:</label>
+    <textarea class="work" id="opt4-answer" name="opt4-answer" style="min-height:220px;" placeholder="Who jumped farther, and how do you know? Show your reasoning..."></textarea>
+  </section>
+
+  <div class="footer-actions">
+    <a class="btn ghost" href="../../index.html">🏠 Back to Home</a>
+  </div>
+
+<script>
+(function () {
+  const sheetId = document.body.dataset.sheet || 'default';
+  const storageKey = 'sheenaz-math-' + sheetId;
+
+  function fields() {
+    return document.querySelectorAll('input[type=text], input[type=number], textarea');
+  }
+
+  function save() {
+    const data = {};
+    fields().forEach((el, i) => {
+      const key = el.name || ('f' + i);
+      data[key] = el.value;
+    });
+    try {
+      localStorage.setItem(storageKey, JSON.stringify(data));
+      setStatus('Saved ✓');
+    } catch (e) {
+      setStatus('Could not save: ' + e.message);
+    }
+  }
+
+  function load() {
+    let data;
+    try { data = JSON.parse(localStorage.getItem(storageKey) || '{}'); }
+    catch { data = {}; }
+    fields().forEach((el, i) => {
+      const key = el.name || ('f' + i);
+      if (data[key] !== undefined) el.value = data[key];
+    });
+  }
+
+  function clearAll() {
+    if (!confirm('Erase all your answers on this page?')) return;
+    localStorage.removeItem(storageKey);
+    fields().forEach(el => { el.value = ''; });
+    setStatus('Cleared.');
+  }
+
+  function setStatus(msg) {
+    const s = document.getElementById('status');
+    if (!s) return;
+    s.textContent = msg;
+    clearTimeout(setStatus._t);
+    setStatus._t = setTimeout(() => { s.textContent = ''; }, 2500);
+  }
+
+  let autosaveTimer;
+  document.addEventListener('input', () => {
+    clearTimeout(autosaveTimer);
+    autosaveTimer = setTimeout(save, 300);
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    load();
+    document.getElementById('saveBtn').addEventListener('click', save);
+    document.getElementById('clearBtn').addEventListener('click', clearAll);
+    document.getElementById('printBtn').addEventListener('click', () => window.print());
+  });
+})();
+</script>
+</body>
+</html>
