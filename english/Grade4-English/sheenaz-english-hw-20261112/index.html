@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grade 4 English Homework — The Crab That Played with the Sea (11/12)</title>
+<style>
+  :root {
+    --bg: #fdfcf7;
+    --ink: #2b2d42;
+    --muted: #6c7281;
+    --accent: #ff4d94;
+    --accent-2: #4dc3ff;
+    --accent-3: #ffb347;
+    --accent-4: #7ad67a;
+    --card: #ffffff;
+    --border: #e3e1d7;
+    --cell: #fffdf3;
+    --cell-border: #333;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Comic Sans MS', 'Trebuchet MS', system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    padding: 12px 16px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .topbar {
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    padding: 10px 14px; margin-bottom: 10px;
+    background: var(--card); border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(43,45,66,0.08);
+    position: sticky; top: 8px; z-index: 20;
+  }
+  .topbar h1 {
+    margin: 0; font-size: 1.1rem;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .topbar .spacer { flex: 1; }
+  .btn {
+    display: inline-block; padding: 8px 14px; border-radius: 999px;
+    background: var(--accent); color: #fff; text-decoration: none; border: none;
+    font: inherit; font-weight: bold; cursor: pointer;
+    box-shadow: 0 2px 6px rgba(255,77,148,0.35);
+  }
+  .btn.secondary { background: var(--accent-2); box-shadow: 0 2px 6px rgba(77,195,255,0.35); }
+  .btn.ghost { background: transparent; color: var(--ink); border: 2px solid var(--border); box-shadow: none; }
+  .btn.small { padding: 5px 10px; font-size: 0.85rem; }
+  .btn + .btn { margin-left: 4px; }
+  .btn:hover { filter: brightness(1.06); }
+
+  .reference {
+    background: var(--card); border-radius: 14px; padding: 10px;
+    box-shadow: 0 6px 18px rgba(43,45,66,0.08); margin-bottom: 14px;
+  }
+  .reference details { text-align: left; }
+  .reference summary {
+    cursor: pointer; font-weight: bold; color: var(--accent);
+    padding: 4px 6px; list-style: none;
+  }
+  .reference summary::-webkit-details-marker { display: none; }
+  .reference summary::before { content: "📄 "; }
+  .reference .scans {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 10px; margin-top: 10px;
+  }
+  .reference img {
+    width: 100%; height: auto; border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  .sheet {
+    background: var(--card); border-radius: 14px; padding: 16px;
+    box-shadow: 0 6px 18px rgba(43,45,66,0.08);
+    margin-bottom: 16px;
+  }
+  .sheet-title {
+    text-align: center; margin: 0 0 14px; font-size: 1.4rem;
+    border: 3px solid var(--ink); padding: 8px; border-radius: 10px;
+    background: #fffdf3; letter-spacing: 1px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+  }
+
+  .story {
+    margin-bottom: 20px;
+    padding: 14px; border-radius: 12px;
+    background: #fffdf3; border: 2px solid var(--border);
+  }
+  .story h2 {
+    margin: 0 0 4px; text-align: center;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    letter-spacing: 1px;
+    color: var(--accent);
+  }
+  .story .byline {
+    text-align: center; margin: 0 0 12px;
+    font-size: 0.95rem; color: var(--muted); font-style: italic;
+  }
+  .story p { margin: 0 0 10px; line-height: 1.5; }
+
+  .section-title {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--accent-2), var(--accent-3));
+    color: #fff; padding: 6px 14px; border-radius: 10px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    letter-spacing: 1px; font-size: 1.1rem;
+    margin: 0 0 10px;
+  }
+  .section-help {
+    margin: 0 0 12px; font-size: 0.95rem; color: var(--muted);
+  }
+
+  .grid {
+    display: grid; grid-template-columns: 1fr; gap: 0;
+    border: 2px solid var(--cell-border); border-radius: 6px; overflow: hidden;
+  }
+  .box {
+    padding: 14px; border-bottom: 1px solid var(--cell-border);
+    background: var(--cell);
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .box:last-child { border-bottom: none; }
+  .qnum {
+    display: inline-block; width: 30px; height: 30px; line-height: 30px;
+    text-align: center; background: var(--accent); color: #fff;
+    border-radius: 999px; font-weight: bold; margin-right: 6px;
+  }
+  .prompt { font-weight: bold; margin: 0; }
+
+  .choices { display: flex; flex-direction: column; gap: 6px; }
+  .choice {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 10px; border: 2px solid var(--border);
+    border-radius: 10px; cursor: pointer; background: #fff;
+  }
+  .choice input { width: 20px; height: 20px; cursor: pointer; }
+  .choice:hover { border-color: var(--accent-2); }
+  .choice.checked { background: #fff4e0; border-color: var(--accent-3); }
+  .choice .letter {
+    display: inline-block; width: 22px; font-weight: bold; color: var(--accent);
+  }
+
+  /* Order of Events rows */
+  .order-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 12px; background: #fff;
+    border: 2px solid var(--border); border-radius: 10px;
+  }
+  .order-row + .order-row { margin-top: 8px; }
+  .order-row input.order-num {
+    width: 54px; height: 40px;
+    text-align: center; font-size: 1.2rem; font-weight: bold;
+    border: 2px solid var(--accent-2); border-radius: 8px;
+    background: #f5fbff; color: var(--ink);
+    font-family: inherit;
+  }
+  .order-row .order-text { flex: 1; line-height: 1.4; }
+
+  .maze-note {
+    padding: 12px; background: #fff; border: 2px solid var(--border);
+    border-radius: 10px; line-height: 1.5;
+  }
+
+  .footer-actions {
+    margin-top: 16px; display: flex; justify-content: center; gap: 10px;
+    padding-top: 12px; border-top: 2px dashed var(--border);
+  }
+  .status { color: var(--muted); font-size: 0.9rem; margin-left: 8px; }
+
+  @media (max-width: 680px) {
+    .order-row input.order-num { width: 48px; height: 38px; }
+  }
+</style>
+</head>
+<body data-sheet="eng-hw-20261112">
+  <div class="topbar">
+    <a class="btn ghost small" href="../../../index.html">🏠 Home</a>
+    <h1>English HW — The Crab That Played with the Sea</h1>
+    <span class="spacer"></span>
+    <button class="btn secondary small" id="saveBtn">💾 Save</button>
+    <button class="btn ghost small" id="clearBtn">🧽 Clear</button>
+    <button class="btn ghost small" id="printBtn">🖨 Print</button>
+    <span class="status" id="status"></span>
+  </div>
+
+  <section class="reference">
+    <details>
+      <summary>Show the original homework pages</summary>
+      <div class="scans">
+        <img src="sheenaz-hw-english-20261112-1.jpeg" alt="Homework page 1">
+        <img src="sheenaz-hw-english-20261112-2.jpeg" alt="Homework page 2">
+      </div>
+    </details>
+  </section>
+
+  <section class="sheet">
+    <h2 class="sheet-title">READ THE STORY. THEN ANSWER THE QUESTIONS.</h2>
+
+    <div class="story">
+      <h2>The Crab That Played with the Sea</h2>
+      <p class="byline">by Rudyard Kipling</p>
+
+      <p>In the Time of the Very Beginning, the Eldest Magician was getting everything ready. He made the Earth ready and the Sea ready. When all was as it should be, he called all the Animals to come out and play.</p>
+
+      <p>"What shall we play?" asked each Animal. "Play at being an Elephant," the Eldest Magician told the Elephant. "Play at being a Turtle," he told the Turtle.</p>
+
+      <p>The Eldest Magician continued telling each Animal how he should play. As evening came, the Man arrived with his small Daughter.</p>
+
+      <p>"What is this play?" the Man asked.</p>
+
+      <p>"It is the play of the Very Beginning," said the Eldest Magician. "But you are too wise for this play."</p>
+
+      <p>"Yes, I am," said the Man. "But make sure all the Animals are obedient to me."</p>
+
+      <p>Next in line was the Crab, who had grown tired and restless with all the waiting. He scuttled off sideways into the Sea, saying to himself "I will play as I like, and I will not have to be obedient to the Man."</p>
+
+      <p>No one saw the Crab go into the Sea except the Daughter, who said nothing.</p>
+
+      <p>After some time, the Eldest Magician came to check on how the world was doing. He went to the Man and asked "How goes it with you? Are all obedient to you?"</p>
+
+      <p>"All are obedient except the Sea," answered the Man. "Once a day the Sea comes flooding in and covers my house. And once a day the Sea runs back out. All I have left is mud."</p>
+
+      <p>Something was wrong. The Eldest Magician, the Man and the Daughter got into the canoe to visit each Animal. The Eldest Magician asked each one if they were playing as he told them and each one said yes.</p>
+
+      <p>The Daughter said "Eldest Magician, at the Very Beginning while you talked to my father, I saw the Crab go into the Sea before you could tell him how to play."</p>
+
+      <p>"How wise you are, little child!" cried the Eldest Magician. "I know where to find him!"</p>
+
+      <p>The Eldest Magician went directly to a large island. He reached under the Wonderful Tree, with its two coconuts, and touched the Crab.</p>
+
+      <p>"You have been playing with the Sea" said the Eldest Magician. "Each day, the waters dry up when you leave your home and flood again when you return. You are making trouble for all the Animals and the Earth."</p>
+
+      <p>"I did not know I was so important!" said the Crab. "From now on, I will do it seven times a day."</p>
+
+      <p>"I cannot make you play as you should, since you escaped me on that first day." said the Eldest Magician. "If you are not afraid, then come out and we will talk."</p>
+
+      <p>The Crab came out from his home and he was huge; as big as the Wonderful Tree!</p>
+
+      <p>"You are not as important as you think. To prove this, I will remove your hard shell and you will have no protection from the Elephant or the Crocodile."</p>
+
+      <p>"Please give me back my shell!" cried the Crab when his shell vanished. "I promise I will play as I should."</p>
+
+      <p>"You may have your shell eleven months of the year," said the Eldest Magician. "The other month will remind you of your promise. I will also make the weeds and rocks a safe home for you and your children."</p>
+
+      <p>"I will make it so you can live in deep water or dry land," said the Man.</p>
+
+      <p>"I will give you my scissors, so you can eat the coconuts from the Wonderful Tree," said the Daughter.</p>
+
+      <p>"I will take all the gifts and play as I should," said the Crab. With that, the Crab grew smaller and smaller, until he was just a tiny Crab. After that, he always played as he should in the Sea.</p>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <h3 class="section-title">Order of Events</h3>
+    <p class="section-help">Put the events from the story "The Crab That Played with the Sea" in the correct order by placing a 1 in front of the first thing that happened, a 2 in front of the second, and so on.</p>
+    <div>
+      <div class="order-row">
+        <input class="order-num" type="number" min="1" max="8" name="order-1" inputmode="numeric">
+        <div class="order-text">The Crab promised to play as he should.</div>
+      </div>
+      <div class="order-row">
+        <input class="order-num" type="number" min="1" max="8" name="order-2" inputmode="numeric">
+        <div class="order-text">The Man told The Eldest Magician the Sea is flooding his home.</div>
+      </div>
+      <div class="order-row">
+        <input class="order-num" type="number" min="1" max="8" name="order-3" inputmode="numeric">
+        <div class="order-text">The Daughter gave the Crab her scissors.</div>
+      </div>
+      <div class="order-row">
+        <input class="order-num" type="number" min="1" max="8" name="order-4" inputmode="numeric">
+        <div class="order-text">The Eldest Magician told the Animals how to play.</div>
+      </div>
+      <div class="order-row">
+        <input class="order-num" type="number" min="1" max="8" name="order-5" inputmode="numeric">
+        <div class="order-text">The Eldest Magician took the Crab's shell away.</div>
+      </div>
+      <div class="order-row">
+        <input class="order-num" type="number" min="1" max="8" name="order-6" inputmode="numeric">
+        <div class="order-text">The Man talked to the Eldest Magician.</div>
+      </div>
+      <div class="order-row">
+        <input class="order-num" type="number" min="1" max="8" name="order-7" inputmode="numeric">
+        <div class="order-text">The Eldest Magician, the Man and the Daughter found the Crab.</div>
+      </div>
+      <div class="order-row">
+        <input class="order-num" type="number" min="1" max="8" name="order-8" inputmode="numeric">
+        <div class="order-text">The Crab slipped into the Sea while the Man and the Eldest Magician talked.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <h3 class="section-title">Who Was It?</h3>
+    <p class="section-help">Circle the correct answer.</p>
+    <div class="grid">
+      <div class="box">
+        <p class="prompt"><span class="qnum">1</span>Who saw the Crab go into the Sea?</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="who1" value="A"><span><span class="letter">A</span>The Eldest Magician</span></label>
+          <label class="choice"><input type="radio" name="who1" value="B"><span><span class="letter">B</span>The Man</span></label>
+          <label class="choice"><input type="radio" name="who1" value="C"><span><span class="letter">C</span>The Daughter</span></label>
+          <label class="choice"><input type="radio" name="who1" value="D"><span><span class="letter">D</span>The Crab</span></label>
+        </div>
+      </div>
+      <div class="box">
+        <p class="prompt"><span class="qnum">2</span>Who told the Animals how to play?</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="who2" value="A"><span><span class="letter">A</span>The Eldest Magician</span></label>
+          <label class="choice"><input type="radio" name="who2" value="B"><span><span class="letter">B</span>The Man</span></label>
+          <label class="choice"><input type="radio" name="who2" value="C"><span><span class="letter">C</span>The Daughter</span></label>
+          <label class="choice"><input type="radio" name="who2" value="D"><span><span class="letter">D</span>The Crab</span></label>
+        </div>
+      </div>
+      <div class="box">
+        <p class="prompt"><span class="qnum">3</span>Who made the water go higher and lower?</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="who3" value="A"><span><span class="letter">A</span>The Eldest Magician</span></label>
+          <label class="choice"><input type="radio" name="who3" value="B"><span><span class="letter">B</span>The Man</span></label>
+          <label class="choice"><input type="radio" name="who3" value="C"><span><span class="letter">C</span>The Daughter</span></label>
+          <label class="choice"><input type="radio" name="who3" value="D"><span><span class="letter">D</span>The Crab</span></label>
+        </div>
+      </div>
+      <div class="box">
+        <p class="prompt"><span class="qnum">4</span>Who was too wise to play?</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="who4" value="A"><span><span class="letter">A</span>The Eldest Magician</span></label>
+          <label class="choice"><input type="radio" name="who4" value="B"><span><span class="letter">B</span>The Man</span></label>
+          <label class="choice"><input type="radio" name="who4" value="C"><span><span class="letter">C</span>The Daughter</span></label>
+          <label class="choice"><input type="radio" name="who4" value="D"><span><span class="letter">D</span>The Crab</span></label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <h3 class="section-title">Word Meanings</h3>
+    <p class="section-help">Circle the correct meaning of the word.</p>
+    <div class="grid">
+      <div class="box">
+        <p class="prompt"><span class="qnum">1</span>scuttled</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="word1" value="A"><span><span class="letter">A</span>walked slowly</span></label>
+          <label class="choice"><input type="radio" name="word1" value="B"><span><span class="letter">B</span>rolled</span></label>
+          <label class="choice"><input type="radio" name="word1" value="C"><span><span class="letter">C</span>ran quickly</span></label>
+          <label class="choice"><input type="radio" name="word1" value="D"><span><span class="letter">D</span>jumped</span></label>
+        </div>
+      </div>
+      <div class="box">
+        <p class="prompt"><span class="qnum">2</span>obedient</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="word2" value="A"><span><span class="letter">A</span>polite and friendly</span></label>
+          <label class="choice"><input type="radio" name="word2" value="B"><span><span class="letter">B</span>generous</span></label>
+          <label class="choice"><input type="radio" name="word2" value="C"><span><span class="letter">C</span>funny</span></label>
+          <label class="choice"><input type="radio" name="word2" value="D"><span><span class="letter">D</span>willing to follow orders</span></label>
+        </div>
+      </div>
+      <div class="box">
+        <p class="prompt"><span class="qnum">3</span>vanished</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="word3" value="A"><span><span class="letter">A</span>turned blue</span></label>
+          <label class="choice"><input type="radio" name="word3" value="B"><span><span class="letter">B</span>disappeared</span></label>
+          <label class="choice"><input type="radio" name="word3" value="C"><span><span class="letter">C</span>exploded</span></label>
+          <label class="choice"><input type="radio" name="word3" value="D"><span><span class="letter">D</span>became soft</span></label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <h3 class="section-title">Letter Maze</h3>
+    <p class="section-help">Find your way from the Green C to the Orange C, by connecting ONLY the letters C. (Do this one on paper — open the original page below.)</p>
+    <div class="maze-note">
+      Open the second homework page in <b>"Show the original homework pages"</b> at the top to see the maze and trace your path with a pencil.
+    </div>
+  </section>
+
+  <div class="footer-actions">
+    <a class="btn ghost" href="../../../index.html">🏠 Back to Home</a>
+  </div>
+
+<script>
+(function () {
+  const sheetId = document.body.dataset.sheet || 'default';
+  const storageKey = 'sheenaz-eng-' + sheetId;
+
+  function fields() {
+    return document.querySelectorAll('input[type=radio], input[type=checkbox], input[type=number], input[type=text]');
+  }
+
+  function save() {
+    const data = {};
+    fields().forEach((el, i) => {
+      const key = el.name || ('f' + i);
+      if (el.type === 'radio' || el.type === 'checkbox') {
+        data[key + '::' + el.value] = el.checked;
+      } else {
+        data[key] = el.value;
+      }
+    });
+    try {
+      localStorage.setItem(storageKey, JSON.stringify(data));
+      setStatus('Saved ✓');
+    } catch (e) {
+      setStatus('Could not save: ' + e.message);
+    }
+  }
+
+  function load() {
+    let data;
+    try { data = JSON.parse(localStorage.getItem(storageKey) || '{}'); }
+    catch { data = {}; }
+    fields().forEach((el, i) => {
+      const key = el.name || ('f' + i);
+      if (el.type === 'radio' || el.type === 'checkbox') {
+        const k = key + '::' + el.value;
+        if (data[k] !== undefined) el.checked = !!data[k];
+      } else {
+        if (data[key] !== undefined) el.value = data[key];
+      }
+    });
+    syncChoices();
+  }
+
+  function clearAll() {
+    if (!confirm('Erase all your answers on this page?')) return;
+    localStorage.removeItem(storageKey);
+    fields().forEach(el => {
+      if (el.type === 'radio' || el.type === 'checkbox') el.checked = false;
+      else el.value = '';
+    });
+    syncChoices();
+    setStatus('Cleared.');
+  }
+
+  function syncChoices() {
+    document.querySelectorAll('.choice').forEach(c => {
+      const input = c.querySelector('input');
+      if (input) c.classList.toggle('checked', !!input.checked);
+    });
+  }
+
+  function setStatus(msg) {
+    const s = document.getElementById('status');
+    if (!s) return;
+    s.textContent = msg;
+    clearTimeout(setStatus._t);
+    setStatus._t = setTimeout(() => { s.textContent = ''; }, 2500);
+  }
+
+  let autosaveTimer;
+  document.addEventListener('input', () => {
+    clearTimeout(autosaveTimer);
+    autosaveTimer = setTimeout(save, 300);
+  });
+  document.addEventListener('change', () => {
+    syncChoices();
+    clearTimeout(autosaveTimer);
+    autosaveTimer = setTimeout(save, 200);
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    load();
+    document.getElementById('saveBtn').addEventListener('click', save);
+    document.getElementById('clearBtn').addEventListener('click', clearAll);
+    document.getElementById('printBtn').addEventListener('click', () => window.print());
+  });
+})();
+</script>
+</body>
+</html>
