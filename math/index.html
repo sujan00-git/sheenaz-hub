@@ -83,7 +83,21 @@
   ul.list .txt { display: flex; flex-direction: column; gap: 2px; }
   ul.list .title { font-weight: bold; font-size: 1.05rem; }
   ul.list .sub { font-size: 0.85rem; color: var(--muted); }
-  ul.list .arrow { margin-left: auto; color: var(--accent); font-weight: bold; }
+  ul.list .date {
+    margin-left: auto;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--muted);
+    background: #f0f6fb;
+    padding: 3px 9px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  ul.list .date.new {
+    color: #fff;
+    background: var(--accent);
+  }
+  ul.list .arrow { color: var(--accent); font-weight: bold; }
   footer {
     text-align: center;
     padding: 20px;
@@ -105,12 +119,13 @@
   <main>
     <ul class="list">
       <li>
-        <a href="https://sujan00-git.github.io/Sheenaz-math-4thgrade/" target="_blank" rel="noopener">
-          <span class="ic">📘</span>
+        <a href="math_hw_20261112/index.html">
+          <span class="ic">📏</span>
           <span class="txt">
-            <span class="title">4th Grade Math Book</span>
-            <span class="sub">Full textbook with chapters, examples, and practice</span>
+            <span class="title">Math HW — 11/12</span>
+            <span class="sub">Fractions, friend-jump number lines, Mario vs. Kelly</span>
           </span>
+          <span class="date new">Added 11/17</span>
           <span class="arrow">→</span>
         </a>
       </li>
@@ -121,15 +136,16 @@
             <span class="title">Math Practice (4.NS.3)</span>
             <span class="sub">9 practice sheets — answers save automatically</span>
           </span>
+          <span class="date">Added 11/10</span>
           <span class="arrow">→</span>
         </a>
       </li>
       <li>
-        <a href="math_hw_20261112/index.html">
-          <span class="ic">📏</span>
+        <a href="https://sujan00-git.github.io/Sheenaz-math-4thgrade/" target="_blank" rel="noopener">
+          <span class="ic">📘</span>
           <span class="txt">
-            <span class="title">Math HW — 11/12</span>
-            <span class="sub">Fractions, friend-jump number lines, Mario vs. Kelly</span>
+            <span class="title">4th Grade Math Book</span>
+            <span class="sub">Full textbook with chapters, examples, and practice</span>
           </span>
           <span class="arrow">→</span>
         </a>
